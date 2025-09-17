@@ -28,6 +28,16 @@ public class TodoService {
         todoRepository.save(mapRegisterToTodo(registerTodoDTO));
     }
 
+    public Todo getTodoById(String id){
+        Todo todoWithID =  todoRepository.findById(id).orElse(null);
+        if(todoWithID == null){
+            return null;
+        }else{
+            return todoWithID;
+        }
+    }
+
+    //Helper Methods
     private Todo mapRegisterToTodo(RegisterTodoDTO registerTodoDTO){
         Todo newTodo = new Todo(IdService.generateId(),
                                 "No Title",
