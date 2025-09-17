@@ -43,12 +43,11 @@ public class TodoService {
 
     //Helper Methods
     private Todo mapRegisterToTodo(RegisterTodoDTO registerTodoDTO){
-        Todo newTodo = new Todo(IdService.generateId(),
+        return new Todo(IdService.generateId(),
                                 "No Title",
-                                registerTodoDTO.discription(),
+                                registerTodoDTO.description(),
                                 registerTodoDTO.status(),
                                 Instant.now());
-        return newTodo;
     }
 
     private Todo mapChangeToTodo(ChangeTodoDTO changeTodoDTO){
