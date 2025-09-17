@@ -1,10 +1,9 @@
 package org.example.recapproject_todo_neuefische.controller;
 
+import org.example.recapproject_todo_neuefische.dto.RegisterTodoDTO;
 import org.example.recapproject_todo_neuefische.entity.Todo;
 import org.example.recapproject_todo_neuefische.service.TodoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +21,11 @@ public class TodoController {
     @GetMapping
     public List<Todo> getAllTodos(){
         return todoService.findAll();
+    }
+
+    //Post Mapping
+    @PostMapping
+    public void addTodo(@RequestBody RegisterTodoDTO newUser){
+        todoService.createNewTodo(newUser);
     }
 }
