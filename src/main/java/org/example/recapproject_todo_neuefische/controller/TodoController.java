@@ -40,4 +40,10 @@ public class TodoController {
     public void updateTodo(@RequestBody ChangeTodoDTO updatedTodo){
         todoService.updateUser(updatedTodo);
     }
+
+    //Delete Mapping
+    @DeleteMapping("/{id}")
+    public void deleteTodo(@PathVariable String id){
+        todoService.deleteTodoById(id);
+    }
 }
