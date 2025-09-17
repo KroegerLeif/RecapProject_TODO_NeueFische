@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface TodoRepository extends MongoRepository<Todo,String>{
     List<Todo> findAll();
     Optional<Todo> findById(String id);
+    void deleteById(String id);
 }
