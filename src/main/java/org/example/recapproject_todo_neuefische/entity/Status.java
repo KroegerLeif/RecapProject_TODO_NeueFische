@@ -2,8 +2,8 @@ package org.example.recapproject_todo_neuefische.entity;
 
 public enum Status {
     OPEN("Open"),
-    DO("Do"),
-    DOING("Doing"),
+    IN_PROGRESS("In Progress"),
+    DONE("Done"),
     CLOSED( "Closed");
 
     private final String name;
