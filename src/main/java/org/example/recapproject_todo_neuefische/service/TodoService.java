@@ -42,6 +42,10 @@ public class TodoService {
         );
     }
 
+    public void deleteTodoById(String id){
+        todoRepository.deleteById(id);
+    }
+
     //Helper Methods
     private Todo mapRegisterToTodo(RegisterTodoDTO registerTodoDTO){
         return new Todo(IdService.generateId(),
