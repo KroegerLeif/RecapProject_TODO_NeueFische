@@ -2,6 +2,7 @@ package org.example.recapproject_todo_neuefische.service;
 
 import org.example.recapproject_todo_neuefische.dto.RegisterTodoDTO;
 import org.example.recapproject_todo_neuefische.entity.Todo;
+import org.example.recapproject_todo_neuefische.exception.UserNotFoundException;
 import org.example.recapproject_todo_neuefische.repro.TodoRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +29,10 @@ public class TodoService {
         todoRepository.save(mapRegisterToTodo(registerTodoDTO));
     }
 
-    public Todo getTodoById(String id){
+    public Todo getTodoById(String id) throws UserNotFoundException{
         Todo todoWithID =  todoRepository.findById(id).orElse(null);
         if(todoWithID == null){
-            return null;
+            throw new UserNotFoundException("No User Found with ID: " + id + "");
         }else{
             return todoWithID;
         }
