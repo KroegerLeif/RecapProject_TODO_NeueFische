@@ -26,9 +26,9 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public void createNewTodo(RegisterTodoDTO registerTodoDTO){
+    public Todo createNewTodo(RegisterTodoDTO registerTodoDTO){
         Todo newTodo = mapRegisterToTodo(registerTodoDTO);
-        todoRepository.save(newTodo);
+        return todoRepository.save(newTodo);
     }
 
     public void updateUser(ChangeTodoDTO changeTodoDTO){

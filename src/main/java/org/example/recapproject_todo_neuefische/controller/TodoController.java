@@ -4,6 +4,8 @@ import org.example.recapproject_todo_neuefische.dto.ChangeTodoDTO;
 import org.example.recapproject_todo_neuefische.dto.RegisterTodoDTO;
 import org.example.recapproject_todo_neuefische.entity.Todo;
 import org.example.recapproject_todo_neuefische.service.TodoService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +33,9 @@ public class TodoController {
 
     //Post Mapping
     @PostMapping
-    public void addTodo(@RequestBody RegisterTodoDTO newUser){
-        todoService.createNewTodo(newUser);
+    public ResponseEntity<Todo> addTodo(@RequestBody RegisterTodoDTO newUser){
+        Todo newTodo = todoService.createNewTodo(newUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newTodo);
     }
 
     //Put Mapping
