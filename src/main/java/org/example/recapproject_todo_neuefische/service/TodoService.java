@@ -30,12 +30,9 @@ public class TodoService {
     }
 
     public Todo getTodoById(String id) throws UserNotFoundException{
-        Todo todoWithID =  todoRepository.findById(id).orElse(null);
-        if(todoWithID == null){
-            throw new UserNotFoundException("No User Found with ID: " + id + "");
-        }else{
-            return todoWithID;
-        }
+        return todoRepository.findById(id).orElseThrow(
+                () -> new UserNotFoundException("No User Found with ID: " + id + "")
+        );
     }
 
     //Helper Methods
