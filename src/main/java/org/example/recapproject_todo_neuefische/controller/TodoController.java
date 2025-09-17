@@ -1,5 +1,6 @@
 package org.example.recapproject_todo_neuefische.controller;
 
+import org.example.recapproject_todo_neuefische.dto.ChangeTodoDTO;
 import org.example.recapproject_todo_neuefische.dto.RegisterTodoDTO;
 import org.example.recapproject_todo_neuefische.entity.Todo;
 import org.example.recapproject_todo_neuefische.service.TodoService;
@@ -32,5 +33,11 @@ public class TodoController {
     @PostMapping
     public void addTodo(@RequestBody RegisterTodoDTO newUser){
         todoService.createNewTodo(newUser);
+    }
+
+    //Put Mapping
+    @PutMapping("/{id}")
+    public void updateTodo(@RequestBody ChangeTodoDTO updatedTodo){
+        todoService.updateUser(updatedTodo);
     }
 }
