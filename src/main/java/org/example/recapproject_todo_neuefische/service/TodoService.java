@@ -27,7 +27,8 @@ public class TodoService {
     }
 
     public void createNewTodo(RegisterTodoDTO registerTodoDTO){
-        todoRepository.save(mapRegisterToTodo(registerTodoDTO));
+        Todo newTodo = mapRegisterToTodo(registerTodoDTO);
+        todoRepository.save(newTodo);
     }
 
     public void updateUser(ChangeTodoDTO changeTodoDTO){
@@ -53,10 +54,11 @@ public class TodoService {
     private Todo mapChangeToTodo(ChangeTodoDTO changeTodoDTO){
         Todo updatedTodo = getTodoById(changeTodoDTO.id());
         //Updates the Dto with the new values
-        updatedTodo.withDescription(changeTodoDTO.description());
-        updatedTodo.withStatus(changeTodoDTO.status());
-        updatedTodo.withTitle(changeTodoDTO.title());
-        return updatedTodo;
+        return updatedTodo
+                .withDescription(changeTodoDTO.description())
+                .withStatus(changeTodoDTO.status())
+                .withTitle(changeTodoDTO.title());
+
     }
 
 
