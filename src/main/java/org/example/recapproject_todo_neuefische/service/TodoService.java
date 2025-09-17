@@ -49,7 +49,6 @@ public class TodoService {
     //Helper Methods
     private Todo mapRegisterToTodo(RegisterTodoDTO registerTodoDTO){
         return new Todo(IdService.generateId(),
-                                "No Title",
                                 registerTodoDTO.description(),
                                 registerTodoDTO.status(),
                                 Instant.now());
@@ -60,8 +59,7 @@ public class TodoService {
         //Updates the Dto with the new values
         return updatedTodo
                 .withDescription(changeTodoDTO.description())
-                .withStatus(changeTodoDTO.status())
-                .withTitle(changeTodoDTO.title());
+                .withStatus(changeTodoDTO.status());
 
     }
 
